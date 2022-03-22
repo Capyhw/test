@@ -34,7 +34,7 @@
           <tr v-for="(cart, index) in order.orderDetailList" :key="cart.id">
             <td width="60%">
               <div class="typographic">
-                <img :src="cart.imgUrl" style="width:100px;height:100px"/>
+                <img :src="cart.imgUrl" style="width:100px;height:100px" alt=""/>
                 <a class="block-text" href="#">{{ cart.skuName }}</a>
                 <span>x{{ cart.skuNum }}</span>
                 <a class="service" href="#">售后申请</a>
