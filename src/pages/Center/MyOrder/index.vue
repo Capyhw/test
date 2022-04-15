@@ -7,72 +7,63 @@
       <div class="chosetype">
         <table>
           <thead>
-          <tr>
-            <th width="29%">商品</th>
-            <th width="31%">订单详情</th>
-            <th width="13%">收货人</th>
-            <th>金额</th>
-            <th>状态</th>
-            <th>操作</th>
-          </tr>
+            <tr>
+              <th width="29%">商品</th>
+              <th width="31%">订单详情</th>
+              <th width="13%">收货人</th>
+              <th>金额</th>
+              <th>状态</th>
+              <th>操作</th>
+            </tr>
           </thead>
         </table>
       </div>
       <div class="orders">
         <!-- 每一笔订单 -->
-        <table v-for="(order, index) in myOrder.records" :key="order.id" class="order-item">
+        <table v-for="(order) in myOrder.records" :key="order.id" class="order-item">
           <thead>
-          <tr>
-            <th colspan="5">
+            <tr>
+              <th colspan="5">
                 <span class="ordertitle">{{ order.createTime }} 订单编号：{{ order.outTradeNo }}
-                  <span class="pull-right delete"><img src="@/pages/Center/images/delete.png"/></span>
+                  <span class="pull-right delete"><img src="@/pages/Center/images/delete.png" /></span>
                 </span>
-            </th>
-          </tr>
+              </th>
+            </tr>
           </thead>
           <tbody>
-          <tr v-for="(cart, index) in order.orderDetailList" :key="cart.id">
-            <td width="60%">
-              <div class="typographic">
-                <img :src="cart.imgUrl" style="width:100px;height:100px"/>
-                <a class="block-text" href="#">{{ cart.skuName }}</a>
-                <span>x{{ cart.skuNum }}</span>
-                <a class="service" href="#">售后申请</a>
-              </div>
-            </td>
-            <td v-if="index === 0" :rowspan="order.orderDetailList.length" class="center" width="8%">
-              {{ order.consignee }}
-            </td>
-            <td v-if="index === 0" :rowspan="order.orderDetailList.length" class="center" width="13%">
-              <ul class="unstyled">
-                <li>总金额¥{{ order.totalAmount }}.00</li>
-                <li>在线支付</li>
-              </ul>
-            </td>
-            <td
-                v-if="index === 0"
-                :rowspan="order.orderDetailList.length"
-                class="center"
-                width="8%">
-              <a class="btn" href="#">{{ order.orderStatusName }}</a>
-            </td>
-            <td v-if="index === 0" :rowspan="order.orderDetailList.length" class="center" width="13%">
-              <ul class="unstyled">
-                <li><a target="_blank">评价|晒单</a></li>
-              </ul>
-            </td>
-          </tr>
+            <tr v-for="(cart, index) in order.orderDetailList" :key="cart.id">
+              <td width="60%">
+                <div class="typographic">
+                  <img :src="cart.imgUrl" style="width:100px;height:100px" />
+                  <a class="block-text" href="#">{{ cart.skuName }}</a>
+                  <span>x{{ cart.skuNum }}</span>
+                  <a class="service" href="#">售后申请</a>
+                </div>
+              </td>
+              <td v-if="index === 0" :rowspan="order.orderDetailList.length" class="center" width="8%">
+                {{ order.consignee }}
+              </td>
+              <td v-if="index === 0" :rowspan="order.orderDetailList.length" class="center" width="13%">
+                <ul class="unstyled">
+                  <li>总金额¥{{ order.totalAmount }}.00</li>
+                  <li>在线支付</li>
+                </ul>
+              </td>
+              <td v-if="index === 0" :rowspan="order.orderDetailList.length" class="center" width="8%">
+                <a class="btn" href="#">{{ order.orderStatusName }}</a>
+              </td>
+              <td v-if="index === 0" :rowspan="order.orderDetailList.length" class="center" width="13%">
+                <ul class="unstyled">
+                  <li><a target="_blank">评价|晒单</a></li>
+                </ul>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
       <div class="choose-order">
         <!-- 分页器 -->
-        <Pagination
-            :continues="5"
-            :pageNo="page"
-            :pageSize="limit"
-            :total="myOrder.total"
-            @getPageNo="getPageNo"/>
+        <Pagination :continues="5" :pageNo="page" :pageSize="limit" :total="myOrder.total" @getPageNo="getPageNo" />
       </div>
     </div>
     <!--猜你喜欢-->
@@ -81,7 +72,7 @@
       <ul class="like-list">
         <li class="likeItem">
           <div class="p-img">
-            <img src="@/pages/Center/images/itemlike01.png"/>
+            <img src="@/pages/Center/images/itemlike01.png" />
           </div>
           <div class="attr">
             <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
@@ -94,7 +85,7 @@
         </li>
         <li class="likeItem">
           <div class="p-img">
-            <img src="@/pages/Center/images/itemlike02.png"/>
+            <img src="@/pages/Center/images/itemlike02.png" />
           </div>
           <div class="attr">
             Apple苹果iPhone 6s/6s Plus 16G 64G 128G
@@ -107,7 +98,7 @@
         </li>
         <li class="likeItem">
           <div class="p-img">
-            <img src="@/pages/Center/images/itemlike03.png"/>
+            <img src="@/pages/Center/images/itemlike03.png" />
           </div>
           <div class="attr">DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</div>
           <div class="price">
@@ -118,7 +109,7 @@
         </li>
         <li class="likeItem">
           <div class="p-img">
-            <img src="@/pages/Center/images/itemlike04.png"/>
+            <img src="@/pages/Center/images/itemlike04.png" />
           </div>
           <div class="attr">DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</div>
           <div class="price">
@@ -154,7 +145,7 @@ export default {
     //获取我的订单的方法
     async getData() {
       //解构出参数
-      const {page, limit} = this;
+      const { page, limit } = this;
       let result = await this.$API.reqMyOrderList(page, limit);
       if (result.code === 200) {
         this.myOrder = result.data;
@@ -399,6 +390,4 @@ export default {
     }
   }
 }
-
-
 </style>
